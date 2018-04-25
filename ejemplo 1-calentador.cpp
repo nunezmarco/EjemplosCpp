@@ -2,16 +2,19 @@
 class Calentador{
  private:
  int temperatura;
+ int incrementa;
 
 public:
 Calentador();
 void calentar();
 void enfriar();
 void imprimeTemperatura();
+int accedeTemperatura() const;
 };  //punto y come obligatorio papá
 
 Calentador::Calentador(){
     temperatura=15;
+    incremento=3;
     
 }
 
@@ -24,6 +27,10 @@ void Calentador::enfriar(){
     temperatura-=5;
     
     
+}
+int Calentador::accedeTemperatura() const{
+    
+    return temperatura;
 }
 int main(){
     
