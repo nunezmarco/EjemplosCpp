@@ -2,7 +2,7 @@
 class Calentador{
  private:
  int temperatura;
- int incrementa;
+ int incremento;
 
 public:
 Calentador();
@@ -19,13 +19,15 @@ Calentador::Calentador(){
 }
 
 void Calentador::calentar(){
-  temperatura+=5;  
-
+    if(temperatura+incremento<=30){
+        temperatura+=incremento;  
+    }
 }
 
 void Calentador::enfriar(){
-    temperatura-=5;
-    
+    if(temperatura-incremento>=-10){
+    temperatura-=incremento;
+    }
     
 }
 int Calentador::accedeTemperatura() const{
@@ -36,10 +38,13 @@ int main(){
     
     Calentador cl;
     Calentador c2;
-    cl.calentar();
-    cl.imprimeTemperatura();
-    c2.enfriar();
-    c2.imprimeTemperatura();
+    for (int i=0 ;i<10;i++){
+        cl.calentar();
+        c2.enfriar();
+        cl.imprimeTemperatura();
+        c2.imprimeTemperatura();
+    }
+    
 }
 
 void Calentador::imprimeTemperatura(){
