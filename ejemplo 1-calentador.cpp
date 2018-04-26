@@ -8,7 +8,8 @@ public:
 Calentador();
 void calentar();
 void enfriar();
-void imprimeTemperatura();
+void imprimeTemperatura() const;
+void imprimeFarenheit() const;
 int accedeTemperatura() const;
 };  //punto y come obligatorio papá
 
@@ -24,6 +25,13 @@ void Calentador::calentar(){
     }
 }
 
+void Calentador::imprimeFarenheit() const{
+    float farenheit = temperatura*1.8+32;
+    std::cout <<"La temperatura es: " << farenheit
+    << "F " << std::endl;
+    
+    
+}
 void Calentador::enfriar(){
     if(temperatura-incremento>=-10){
     temperatura-=incremento;
@@ -38,16 +46,18 @@ int main(){
     
     Calentador cl;
     Calentador c2;
-    for (int i=0 ;i<10;i++){
+    
         cl.calentar();
         c2.enfriar();
         cl.imprimeTemperatura();
+        cl.imprimeFarenheit();
         c2.imprimeTemperatura();
-    }
+        c2.imprimeFarenheit();
+    
     
 }
 
-void Calentador::imprimeTemperatura(){
+void Calentador::imprimeTemperatura() const{
     
-    std::cout << "La temperatura es " << temperatura << std::endl;
+    std::cout << "La temperatura es " << temperatura << "C" << std::endl;
 }
