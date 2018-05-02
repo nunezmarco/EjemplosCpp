@@ -8,11 +8,12 @@ class Calentador{
 
 public:
 Calentador(int min, int max, int temperatura=0); //el 0 hace que si no pongo ningun valor, entonces lo toma como 0
-void calentar();
+void operator++();
 void enfriar();
 void imprimeTemperatura() const;
 void imprimeFarenheit() const;
 int accedeTemperatura() const;
+bool operator==(Calentador a);
 };  //punto y come obligatorio papá
 
 Calentador::Calentador(int min, int max,int temperatura){
@@ -35,10 +36,18 @@ Calentador::Calentador(int min, int max,int temperatura){
     
 }
 
-void Calentador::calentar(){
+void Calentador::operator++(){
     if(temperatura+incremento<=this->max){
         temperatura+=incremento;  
     }
+}
+
+bool Calentador:: operator==(Calentador otro){
+if(this->temperatura==otro.temperatura){
+    return true;
+}    else {
+return false;
+}
 }
 
 void Calentador::imprimeFarenheit() const{
@@ -60,15 +69,22 @@ int Calentador::accedeTemperatura() const{
 }
 int main(){
    
-    Calentador cl{11,10};
+    Calentador cl{0,30,10};
     Calentador c2{0,30,10};
     
-        cl.calentar();
-        c2.enfriar();
+        ++cl;
+        //c2.enfriar();
         cl.imprimeTemperatura();
         cl.imprimeFarenheit();
         c2.imprimeTemperatura();
         c2.imprimeFarenheit();
+        if(cl==c2){
+        std::cout << "Iguales";    
+        
+        }
+        else{
+            std::cout << "Diferentes";
+        }
     
     
    
