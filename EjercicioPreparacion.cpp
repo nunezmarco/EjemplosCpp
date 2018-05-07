@@ -1,8 +1,14 @@
 #include <iostream>
+
+
+
 class Fraccion{
     private:
     int numerador;
     int denominador;
+    
+    friend void operator<<(std::ostream&,Fraccion); //Permite acceder a las variables privadas de la fraccion
+    friend void operator>>(std::istream&,Fraccion&); //Permite acceder a las variables privadas de la fraccion
     
     public:
     Fraccion(int num=0, int den=0);
@@ -14,6 +20,8 @@ class Fraccion{
     int dimeDen();
     void imprime();
 };
+
+
 
 Fraccion::Fraccion(int a, int b){
     numerador=a;
@@ -64,11 +72,21 @@ void Fraccion::imprime(){
 }
 
 
+void operator<<(std::ostream& salida, Fraccion f){
+    salida<<f.numerador<<"/"<<f.denominador<<"\n";
+}
 
-int main(){
+void operator>>(std::istream& entrada, Fraccion& f){
+   entrada>>f.numerador >>f.denominador;
+}
+
+int main(){   
   Fraccion f1{3,8};
   Fraccion f2{4,5};
   Fraccion f3=f1+(f2);
+  std::cout<<f3;
+  std::cin>>f3;
+  std::cout<<f3;
   std::cout << "El resultado de la suma es: " << f3.dimeNumerador() << " / " << f3.dimeDen() << std::endl;
    f3=f1-(f2);
   std::cout << "El resultado de la resta es: " << f3.dimeNumerador() << " / " << f3.dimeDen() << std::endl;
@@ -77,3 +95,10 @@ int main(){
    f3=f1*(f2);
    std::cout << "El resultado de la multiplicacion  es: " << f3.dimeNumerador() << " / " << f3.dimeDen() << std::endl;
 }
+
+//void intercambia(int &a,int &b){
+//int aux;
+//aux=a;
+//a=b;
+//b=aux;
+//}
