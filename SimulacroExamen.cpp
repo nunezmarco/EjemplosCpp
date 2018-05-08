@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 class Polinomio{
     private:
@@ -13,6 +14,7 @@ class Polinomio{
   public:
   Polinomio(int un=0,int dos=0, int tre=0);
   int operator()(int val);
+  int operator~();
     
     
 
@@ -49,11 +51,19 @@ void operator<<(std::ostream& salida, Polinomio f){
   salida<<f.a<< "x^2 +" << f.b << "x +" <<f.c<< "\n";
 }
 
+int Polinomio::operator~(){
+    int raiz;
+    raiz=(-b+(sqrt((b^2)-(4*a*c))))/(2*a);
+    return raiz;
+}
+
 int main(){
     
     Polinomio p{};
     std::cin>>p;
-    std::cout<<"El polinomio " <<p;
-    std::cout<<"Evaluado en 2 es "<< p(2);
+    std::cout<<"La raiz de " <<p;
+    float raiz=~p;
+   // std::cout<<"Es: "<<raiz;
+    std::cout<<p(~p);
     
 }
