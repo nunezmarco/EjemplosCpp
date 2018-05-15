@@ -22,12 +22,16 @@ Pila<Tipo>::Pila(int tam){
 
 template<typename Tipo>
 void Pila<Tipo>::Push(Tipo dato){
-    
+    tope++;
+    arreglo[tope]=dato;
 }
 
 template<typename Tipo>
 Tipo Pila<Tipo>::Pop(){
-    
+    Tipo aux;
+    aux=arreglo[tope];
+    tope--;
+    return aux;
 }
 
 template<typename Tipo>
@@ -36,7 +40,7 @@ Pila<Tipo>::~Pila(){
 }
 
 int main(){
-    Pila<int>miPila[5];
+    Pila<int>miPila(5);
     miPila.Push(3);
     miPila.Push(7);
     int x=miPila.Pop();
