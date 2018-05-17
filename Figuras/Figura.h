@@ -1,12 +1,15 @@
-
+#ifndef  FIGURA_INCLUIDA
+#define FIGURA_INCLUIDA
 
 class Figura{
-  private:
+  protected:
     float area;
     
     
   public:
     Figura();
-    void calculaArea();
+    virtual void calculaArea() = 0;
     void imprimeArea();
 };
+
+#endif

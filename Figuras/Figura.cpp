@@ -6,7 +6,7 @@
     
     }
     void Figura::calculaArea(){
-        std::cout<<"No se como calcular el area"<<std::endl;
+       // std::cout<<"No se como calcular el area"<<std::endl;
         
         
     }
